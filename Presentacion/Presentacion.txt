@@ -4,7 +4,7 @@ Evidencia creación de repositorio GitHub
 
 Presentación Integrantes:
 
-Mi nombre es Nelson Felipe Bermúdez Flechas, soy Administrador de Empresas, Rol para este Sprint 1 es (pendiente por asignar)
+Mi nombre es Nelson Felipe Bermúdez Flechas, soy Administrador de Empresas, Rol para este Sprint 1 es Scrum Master.
 Mi nombre es Sebastian Alejandro Rueda Pinzon, soy ingeniero electronico recien egresado, Rol para este Sprint 1 es (pendiente por asignar)
 Mi nombre es Luis Fernando Molina G, soy ingeniero topográfico, Rol para este Sprint 1 es (pendiente por asignar)
 Mi nombre es Mauricio Gómez Henao, soy técnico en sistemas, Rol para este Sprint es Desarrollador y Administrador de Base de Datos.
