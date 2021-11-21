@@ -1,6 +1,6 @@
 import { gql } from 'apollo-server-express';
 
-const tiposProyecto = gql`
+const tiposProyecto = gql `
   type Objetivo {
     _id: ID!
     descripcion: String!
@@ -36,7 +36,7 @@ const tiposProyecto = gql`
       presupuesto: Float!
       fechaInicio: Date!
       fechaFin: Date!
-      estado: Enum_EstadoProyecto!
+      estado: Enum_EstadoProyecto
       fase: Enum_FaseProyecto!
       lider: String!
       objetivos: [crearObjetivo]
