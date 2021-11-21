@@ -45,18 +45,18 @@ const userSchema = new Schema({
             // },
             message: 'El formato del correo electrónico está malo.',
         },
+    },
 
-        rol: {
-            type: String,
-            required: true,
-            enum: ['ESTUDIANTE', 'LIDER', 'ADMINISTRADOR'],
-        },
-        estado: {
-            type: String,
-            enum: ['PENDIENTE', 'AUTORIZADO', 'NO_AUTORIZADO'],
-            default: 'PENDIENTE',
-        },
-    }
+    rol: {
+        type: String,
+        required: true,
+        enum: ['ESTUDIANTE', 'LIDER', 'ADMINISTRADOR'],
+    },
+    estado: {
+        type: String,
+        enum: ['PENDIENTE', 'AUTORIZADO', 'NO_AUTORIZADO'],
+        default: 'PENDIENTE',
+    },
 });
 
 const UserModel = model('Usuario', userSchema);
