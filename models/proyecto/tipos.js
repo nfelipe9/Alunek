@@ -28,6 +28,7 @@ const tiposProyecto = gql `
 
   type Query {
     Proyectos: [Proyecto]
+    ProyectosUsuarios: [Proyecto]
   }
 
   type Mutation {
@@ -41,6 +42,9 @@ const tiposProyecto = gql `
       lider: String!
       objetivos: [crearObjetivo]
     ): Proyecto
+
+    crearObjetivo(idProyecto: String!, descripcion:String!, tipo:Enum_TipoObjetivo!):Proyecto
+
   }
 `;
 
