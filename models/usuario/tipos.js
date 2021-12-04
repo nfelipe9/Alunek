@@ -1,6 +1,6 @@
 import { gql } from 'apollo-server-express';
 
-const tiposUsuario = gql`
+const tiposUsuario = gql `
   type Usuario {
     _id: ID!
     nombre: String!
@@ -11,12 +11,18 @@ const tiposUsuario = gql`
     estado: Enum_EstadoUsuario
     inscripciones: [Inscripcion]
     avancesCreados: [Avance]
+    proyectos:[Proyecto]
     proyectosLiderados: [Proyecto]
+    usuariosAvance: [Avance]
   }
 
   type Query {
     Usuarios: [Usuario]
+    usuariosAvance: [Usuario]
+    ProyectoLiderado:[Usuario]
     Usuario(_id: String!): Usuario
+    # Usuario(rol: String!): Usuario
+    # Usuario (_id: String, rol: String) : Usuario
   }
 
   type Mutation {

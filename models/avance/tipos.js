@@ -1,6 +1,6 @@
 import { gql } from 'apollo-server-express';
 
-const tiposAvance = gql`
+const tiposAvance = gql `
   type Avance {
     _id: ID!
     fecha: Date!
@@ -15,7 +15,10 @@ const tiposAvance = gql`
     filtrarAvance(_id: String!): [Avance]
   }
   type Mutation {
-    crearAvance(fecha: Date!, descripcion: String!, proyecto: String!, creadoPor: String!): Avance
+    crearAvance(fecha: Date! descripcion: String! proyecto: String! creadoPor: String!): Avance
+    editarAvance(_id: String! fecha: Date! proyecto: String! descripcion: String! creadoPor: String!): Avance
+    editarAvanceEstudiante(titulo:String! descripcion:String!): Avance
+    eliminarAvance(_id:String! descripcion:String!): Avance
   }
 `;
 

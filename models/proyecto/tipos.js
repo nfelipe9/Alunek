@@ -1,6 +1,6 @@
 import { gql } from 'apollo-server-express';
 
-const tiposProyecto = gql`
+const tiposProyecto = gql `
   type Objetivo {
     _id: ID!
     descripcion: String!
@@ -43,6 +43,7 @@ const tiposProyecto = gql`
 
   type Query {
     Proyectos: [Proyecto]
+    ProyectosUsuarios: [Proyecto]
   }
 
   type Mutation {
