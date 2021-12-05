@@ -2,6 +2,11 @@ import { UserModel } from './usuario.js';
 import bcrypt from 'bcrypt';
 
 const resolversUsuario = {
+    Usuario: {
+        inscripciones: async(parent, args, context) => {
+            return InscriptionModel.find({ estudiante: parent._id });
+        },
+    },
     Query: {
         Usuarios: async(parent, args, context) => {
             const usuarios = await UserModel.find().populate([{
@@ -24,9 +29,9 @@ const resolversUsuario = {
             return usuariosAvance;
         },
 
-        ProyectoLiderado: async(parent, args) => {
-            const ProyectoLiderado = await UserModel.find().populate('ProyectosLiderados');
-            return ProyectoLiderado;
+        proyectosLiderados: async(parent, args) => {
+            const proyectosLiderados = await UserModel.find().populate('proyectosLiderados');
+            return proyectosLiderados;
         },
 
         Usuario: async(parent, args) => {

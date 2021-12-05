@@ -35,11 +35,10 @@ const resolversAvance = {
             return editarAvance;
         },
 
-        editarAvanceEstudiante: async(parent, arcgs) => {
+        editarAvanceEstudiante: async(parent, args) => {
             const editarAvanceEstudiante =
-                await ModeloAvance.findByIdAndUpdate(arcgs.idAvance, {
-                    titulo: arcgs.titulo,
-                    descripcion: arcgs.descripcion,
+                await ModeloAvance.findByIdAndUpdate(args._id, {
+                    descripcion: args.descripcion,
                 }, { new: true });
 
             return editarAvanceEstudiante;
@@ -54,6 +53,15 @@ const resolversAvance = {
                 return usuarioEliminado;
             }
         },
+
+        // editarObservacionLider: async(parents, args) => {
+        //     const avanceLider = await ModeloAvance.findByIdAndUpdate(args._id {
+        //         _id: args.observaciones,
+        //         observaciones: args.observaciones
+        //     }, { new: true });
+
+        // return avanceLider;
+
     },
 };
 
