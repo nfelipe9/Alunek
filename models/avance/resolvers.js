@@ -35,14 +35,30 @@ const resolversAvance = {
             return editarAvance;
         },
 
-        editarAvanceEstudiante: async(parent, args) => {
+        editarAvanceEstudiante: async(parent, arcgs) => {
             const editarAvanceEstudiante =
-                await ModeloAvance.findByIdAndUpdate(args._id, {
-                    descripcion: args.descripcion,
+                await ModeloAvance.findByIdAndUpdate(arcgs.idAvance, {
+                    titulo: arcgs.titulo,
+                    descripcion: arcgs.descripcion,
                 }, { new: true });
 
             return editarAvanceEstudiante;
+        },
 
+        // editarAvanceEstudiante: async(parent, args) => {
+        //     const editarAvanceEstudiante =
+        //         await ModeloAvance.findByIdAndUpdate(args._id, {
+        //             descripcion: args.descripcion,
+        //         }, { new: true });
+
+        //     return editarAvanceEstudiante;
+
+
+        agregarObservaciones: async(parents, args) => {
+            const avanceEditado = await ModeloAvance.findByIdAndUpdate(args._id, {
+                observaciones: args.observaciones
+            }, { new: true })
+            return avanceEditado
         },
         eliminarAvance: async(parents, args) => {
             if (Object.keys(args).includes('_id')) {
@@ -54,15 +70,17 @@ const resolversAvance = {
             }
         },
 
-        // editarObservacionLider: async(parents, args) => {
-        //     const avanceLider = await ModeloAvance.findByIdAndUpdate(args._id {
-        //         _id: args.observaciones,
-        //         observaciones: args.observaciones
-        //     }, { new: true });
-
-        // return avanceLider;
-
     },
+
+    // editarObservacionLider: async(parents, args) => {
+    //     const avanceLider = await ModeloAvance.findByIdAndUpdate(args._id {
+    //         _id: args.observaciones,
+    //         observaciones: args.observaciones
+    //     }, { new: true });
+
+    // return avanceLider;
+
+
 };
 
 

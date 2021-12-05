@@ -13,15 +13,19 @@ const resolversProyecto = {
         },
 
 
-        Proyecto: async(parent, args) => {
-            const proyecto = await ProjectModel.findOne({ lider: args.lider }).populate([{
-                path: 'lider',
+        // Proyecto: async(parent, args) => {
+        //     const proyecto = await ProjectModel.findOne({ _id: args.id }).populate([{
+        //         path: 'lider',
 
-            }, ]).exec();
+        //     }, ]).exec();
+        //     return proyecto;
+        // },
+
+        Proyecto: async(project, args) => {
+            const proyecto = await ProjectModel.findOne({ _id: args._id }).populate('avances').populate('inscripciones').populate('lider');
+
             return proyecto;
         },
-
-
 
     },
     Mutation: {

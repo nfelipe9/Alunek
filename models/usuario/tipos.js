@@ -25,7 +25,7 @@ const tiposUsuario = gql `
   type Query {
     Usuarios: [Usuario]
     usuariosAvance: [Usuario]
-    # proyectosLiderados:[Usuario]
+    proyectosLiderados:[Usuario]
     Usuario(_id: String!): Usuario
     # Usuario(rol: String!): Usuario
     # Usuario (_id: String, rol: String) : Usuario
@@ -48,7 +48,7 @@ const tiposUsuario = gql `
       apellido: String!
       identificacion: String!
       correo: String!
-      estado: Enum_EstadoUsuario!
+      estado: Enum_EstadoUsuario
     ): Usuario
 
     eliminarUsuario(_id: String, correo: String): Usuario

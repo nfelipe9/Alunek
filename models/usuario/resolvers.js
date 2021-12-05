@@ -30,7 +30,7 @@ const resolversUsuario = {
         },
 
         proyectosLiderados: async(parent, args) => {
-            const proyectosLiderados = await UserModel.find().populate('proyectosLiderados');
+            const proyectosLiderados = await UserModel.find().populate('ProyectosLiderados');
             return proyectosLiderados;
         },
 
