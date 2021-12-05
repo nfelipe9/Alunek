@@ -45,6 +45,12 @@ const resolversAvance = {
             return editarAvanceEstudiante;
 
         },
+        agregarObservaciones: async(parents, args) => {
+            const avanceEditado = await ModeloAvance.findByIdAndUpdate(args._id,{
+                observaciones: args.observaciones
+            }, { new: true })
+            return avanceEditado
+        },
         eliminarAvance: async(parents, args) => {
             if (Object.keys(args).includes('_id')) {
                 const avanceEliminado = await ModeloAvance.findOneAndDelete({ _id: args._id });
