@@ -37,8 +37,8 @@ const resolversAvance = {
 
         editarAvanceEstudiante: async(parent, arcgs) => {
             const editarAvanceEstudiante =
-                await ModeloAvance.findByIdAndUpdate(arcgs.idAvance, {
-                    titulo: arcgs.titulo,
+                await ModeloAvance.findByIdAndUpdate(arcgs._id, {
+                    _id: arcgs.titulo,
                     descripcion: arcgs.descripcion,
                 }, { new: true });
 
