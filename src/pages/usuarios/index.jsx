@@ -24,13 +24,13 @@ const IndexUsuarios = () => {
         <table className='tabla'>
           <thead>
             <tr>
-              <th>Nombre</th>
-              <th>Apellidos</th>
-              <th>Correo</th>
-              <th>Identificación</th>
-              <th>Rol</th>
-              <th>Estado</th>
-              <th>Editar</th>
+              <th>NOMBRE</th>
+              <th>APELLIDO</th>
+              <th>CORREO</th>
+              <th>IDENTIFICACIÓN</th>
+              <th>ROL</th>
+              <th>ESTADO</th>
+              <th>EDITAR</th>
             </tr>
           </thead>
           <tbody>
