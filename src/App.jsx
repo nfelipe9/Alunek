@@ -21,6 +21,8 @@ import 'styles/globals.css';
 import 'styles/tabla.css';
 import NuevoProyecto from 'pages/proyectos/NuevoProyecto';
 import IndexInscripciones from 'pages/inscripciones';
+import EditarProyecto from 'pages/proyectos/EditarProyecto';
+import Inscritos from 'pages/proyectos/Inscritos';
 
 // import PrivateRoute from 'components/PrivateRoute';
 
@@ -89,6 +91,8 @@ function App() {
                 <Route path='page2' element={<Page2 />} />
                 <Route path='category1' element={<IndexCategory1 />} />
                 <Route path='category1/page1' element={<Category1 />} />
+                <Route path='/proyectos/:_id' element={<EditarProyecto />} />
+                <Route path='/inscritos' element={<Inscritos />} />
               </Route>
               <Route path='/auth' element={<AuthLayout />}>
                 <Route path='register' element={<Register />} />

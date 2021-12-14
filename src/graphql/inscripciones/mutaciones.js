@@ -16,4 +16,14 @@ const APROBAR_INSCRIPCION = gql`
   }
 `;
 
+export const RECHAZAR_INSCRIPCION = gql`
+
+  mutation RechazarInscripcion($_id: String!) {
+    rechazarInscripcion(id: $_id) {
+      _id
+      estado
+    }
+  }
+`;
+
 export { CREAR_INSCRIPCION, APROBAR_INSCRIPCION };

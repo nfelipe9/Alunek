@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useMutation, useQuery } from '@apollo/client';
 import PrivateRoute from 'components/PrivateRoute';
 import { GET_INSCRIPCIONES } from 'graphql/inscripciones/queries';
-import { APROBAR_INSCRIPCION } from 'graphql/inscripciones/mutaciones';
+import { APROBAR_INSCRIPCION, RECHAZAR_INSCRIPCION } from 'graphql/inscripciones/mutaciones';
 import ButtonLoading from 'components/ButtonLoading';
 import { toast } from 'react-toastify';
 import {
@@ -42,7 +42,7 @@ const IndexInscripciones = () => {
   );
 };
 
-const AccordionInscripcion = ({ data, titulo, refetch = () => {} }) => {
+const AccordionInscripcion = ({ data, titulo, refetch = () => { } }) => {
   return (
     <AccordionStyled>
       <AccordionSummaryStyled>
@@ -62,6 +62,7 @@ const AccordionInscripcion = ({ data, titulo, refetch = () => {} }) => {
 
 const Inscripcion = ({ inscripcion, refetch }) => {
   const [aprobarInscripcion, { data, loading, error }] = useMutation(APROBAR_INSCRIPCION);
+  const [rechazarInscripcion,{data:mutationData, loading: mutationLoading}] = useMutation(RECHAZAR_INSCRIPCION);
 
   useEffect(() => {
     if (data) {
@@ -71,12 +72,19 @@ const Inscripcion = ({ inscripcion, refetch }) => {
   }, [data]);
 
   useEffect(() => {
+    if(mutationData && mutationData.rechazarInscripcion){
+      toast.success("Inscripcion rechazada con exito")
+      refetch()
+    }
+  },[mutationData])
+
+  useEffect(() => {
     if (error) {
       toast.error('Error aprobando la inscripcion');
     }
   }, [error]);
 
-  const cambiarEstadoInscripcion = () => {
+  const aprobar = () => {
     aprobarInscripcion({
       variables: {
         aprobarInscripcionId: inscripcion._id,
@@ -84,20 +92,34 @@ const Inscripcion = ({ inscripcion, refetch }) => {
     });
   };
 
+  const rechazar = () => {
+    rechazarInscripcion({variables: { _id:inscripcion._id}})
+  }
+
   return (
     <div className='bg-gray-900 text-gray-50 flex flex-col p-6 m-2 rounded-lg shadow-xl'>
       <span>{inscripcion.proyecto.nombre}</span>
-      <span>{inscripcion.estudiante.nombre}</span>
+      <span className="capitalize">{inscripcion.estudiante.nombre + " " + inscripcion.estudiante.apellido}</span>
       <span>{inscripcion.estado}</span>
       {inscripcion.estado === 'PENDIENTE' && (
-        <ButtonLoading
-          onClick={() => {
-            cambiarEstadoInscripcion();
-          }}
-          text='Aprobar Inscripcion'
-          loading={loading}
-          disabled={false}
-        />
+        <>
+          <ButtonLoading
+            onClick={() => {
+              aprobar();
+            }}
+            text='Aprobar'
+            loading={loading}
+            disabled={false}
+          />
+          <ButtonLoading
+            onClick={() => {
+              rechazar();
+            }}
+            text='Rechazar'
+            loading={loading}
+            disabled={false}
+          />
+        </>
       )}
     </div>
   );

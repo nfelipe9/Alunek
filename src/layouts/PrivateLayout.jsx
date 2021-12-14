@@ -8,6 +8,7 @@ import { REFRESH_TOKEN } from 'graphql/auth/mutations';
 import { useNavigate } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
 import PrivateRoute from 'components/PrivateRoute';
+import Header from 'components/Header';
 
 const PrivateLayout = () => {
   const navigate = useNavigate();
@@ -39,7 +40,8 @@ const PrivateLayout = () => {
     <div className='flex flex-col md:flex-row flex-no-wrap h-screen'>
       <Sidebar />
       <div className='flex w-full h-full'>
-        <div className='w-full h-full  overflow-y-scroll'>
+        <div className='w-full h-full overflow-y-scroll'>
+          <Header/>
           <Outlet />
         </div>
       </div>

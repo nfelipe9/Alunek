@@ -22,4 +22,29 @@ const GET_INSCRIPCIONES = gql`
   }
 `;
 
-export { GET_INSCRIPCIONES };
+const GET_PROYECTOS_ESTUDIANTE = gql`
+query InscripcionesEstudiante($_id: String!) {
+  inscripcionesEstudiante(_id: $_id) {
+    estado
+    fechaEgreso
+    proyecto {
+      _id
+      nombre
+      estado
+      fase
+      objetivos {
+        descripcion
+        tipo
+      }
+      lider {
+        _id
+        correo
+        nombre
+        apellido
+      }
+    }
+  }
+}
+`;
+
+export { GET_INSCRIPCIONES, GET_PROYECTOS_ESTUDIANTE };

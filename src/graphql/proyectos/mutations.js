@@ -13,16 +13,12 @@ const CREAR_PROYECTO = gql`
   mutation CrearProyecto(
     $nombre: String!
     $presupuesto: Float!
-    $fechaInicio: Date!
-    $fechaFin: Date!
     $lider: String!
     $objetivos: [crearObjetivo]
   ) {
     crearProyecto(
       nombre: $nombre
       presupuesto: $presupuesto
-      fechaInicio: $fechaInicio
-      fechaFin: $fechaFin
       lider: $lider
       objetivos: $objetivos
     ) {
@@ -31,4 +27,15 @@ const CREAR_PROYECTO = gql`
   }
 `;
 
-export { EDITAR_PROYECTO, CREAR_PROYECTO };
+const TERMINAR_PROYECTO = gql`
+
+  mutation TerminarProyecto($_id: String!) {
+    terminarProyecto(_id: $_id) {
+      _id
+      nombre
+      fechaFin
+    }
+  }
+`;
+
+export { EDITAR_PROYECTO, CREAR_PROYECTO, TERMINAR_PROYECTO };

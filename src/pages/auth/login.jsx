@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Input from 'components/Input';
 import ButtonLoading from 'components/ButtonLoading';
 import { Link } from 'react-router-dom';
@@ -7,18 +7,20 @@ import { useMutation } from '@apollo/client';
 import { LOGIN } from 'graphql/auth/mutations';
 import { useAuth } from 'context/authContext';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const Login = () => {
   const navigate = useNavigate();
   const { setToken } = useAuth();
   const { form, formData, updateFormData } = useFormData();
+  const [error,setError] = useState();
 
   const [login, { data: dataMutation, loading: mutationLoading, error: mutationError }] =
     useMutation(LOGIN);
 
   const submitForm = (e) => {
     e.preventDefault();
-
+    
     login({
       variables: formData,
     });
@@ -29,6 +31,9 @@ const Login = () => {
       if (dataMutation.login.token) {
         setToken(dataMutation.login.token);
         navigate('/');
+      }
+      if(dataMutation.login.error){
+        setError(true)
       }
     }
   }, [dataMutation, setToken, navigate]);
@@ -45,6 +50,9 @@ const Login = () => {
           text='Iniciar Sesión'
         />
       </form>
+      <div
+      className={`font-bold border-b-2 border-red-400 text-red-700 my-2 ${error||"hidden"}`}
+      >Parece que el usuario o la contraseña son incorrectos :'(</div>
       <span>¿No tienes una cuenta?</span>
       <Link to='/auth/register'>
         <span className='text-blue-700'>Regístrate</span>

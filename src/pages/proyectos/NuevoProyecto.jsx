@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { useMutation, useQuery } from '@apollo/client';
+import { useMutation } from '@apollo/client';
 import Input from 'components/Input';
-import { GET_USUARIOS } from 'graphql/usuarios/queries';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import DropDown from 'components/Dropdown';
 import ButtonLoading from 'components/ButtonLoading';
 import useFormData from 'hooks/useFormData';
@@ -11,34 +10,28 @@ import { nanoid } from 'nanoid';
 import { ObjContext } from 'context/objContext';
 import { useObj } from 'context/objContext';
 import { CREAR_PROYECTO } from 'graphql/proyectos/mutations';
+import { useUser } from 'context/userContext';
+import { toast } from 'react-toastify';
 
 const NuevoProyecto = () => {
+
+  const navigate = useNavigate();
+
+  const { userData } = useUser()
   const { form, formData, updateFormData } = useFormData();
-  const [listaUsuarios, setListaUsuarios] = useState({});
-  const { data, loading, error } = useQuery(GET_USUARIOS, {
-    variables: {
-      filtro: { rol: 'LIDER', estado: 'AUTORIZADO' },
-    },
-  });
 
-  const [crearProyecto, { data: mutationData, loading: mutationLoading, error: mutationError }] =
-    useMutation(CREAR_PROYECTO);
-
-  useEffect(() => {
-    console.log(data);
-    if (data) {
-      const lu = {};
-      data.Usuarios.forEach((elemento) => {
-        lu[elemento._id] = elemento.correo;
-      });
-
-      setListaUsuarios(lu);
-    }
-  }, [data]);
+  const [crearProyecto, { data: mutationData, loading: mutationLoading, error: mutationError }] = useMutation(CREAR_PROYECTO);
 
   useEffect(() => {
     console.log('data mutation', mutationData);
   });
+
+  useEffect(() => {
+    if (mutationData && mutationData.crearProyecto) {
+      navigate("/proyectos")
+      toast.success("Proyecto creado correctamente")
+    }
+  }, [mutationData])
 
   const submitForm = (e) => {
     e.preventDefault();
@@ -47,11 +40,9 @@ const NuevoProyecto = () => {
     formData.presupuesto = parseFloat(formData.presupuesto);
 
     crearProyecto({
-      variables: formData,
+      variables: { ...formData, lider: userData._id },
     });
   };
-
-  if (loading) return <div>...Loading</div>;
 
   return (
     <div className='p-10 flex flex-col items-center'>
@@ -64,11 +55,10 @@ const NuevoProyecto = () => {
       <form ref={form} onChange={updateFormData} onSubmit={submitForm}>
         <Input name='nombre' label='Nombre del Proyecto' required={true} type='text' />
         <Input name='presupuesto' label='Presupuesto del Proyecto' required={true} type='number' />
-        <Input name='fechaInicio' label='Fecha de Inicio' required={true} type='date' />
-        <Input name='fechaFin' label='Fecha de Fin' required={true} type='date' />
-        <DropDown label='Líder' options={listaUsuarios} name='lider' required={true} />
         <Objetivos />
-        <ButtonLoading text='Crear Proyecto' loading={false} disabled={false} />
+        <div className='relative left-1'>
+          <ButtonLoading text='Crear Proyecto' loading={false} disabled={false} />
+        </div>
       </form>
     </div>
   );
