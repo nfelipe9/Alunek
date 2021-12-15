@@ -27,7 +27,7 @@ import Inscritos from 'pages/proyectos/Inscritos';
 // import PrivateRoute from 'components/PrivateRoute';
 
 const httpLink = createHttpLink({
-  uri: 'http://localhost:4000/graphql',
+  uri: 'https://back-alunek.herokuapp.com/graphql',
 });
 
 const authLink = setContext((_, { headers }) => {
