@@ -43,7 +43,7 @@ const Logout = () => {
 const Logo = () => {
   return (
     <div className='py-3 w-full flex flex-col items-center justify-center mt-2 -mb-8'>
-      <img src='logo.png' alt='Logo' className='h-16 hover:translate-x-64 ' />
+      <img src='logo.png' alt='Logo' className='h-16 hover:t ' />
       <span className='my-2 text-xl font-bold text-center text-green-800 hover:text-gray-700'>ALUNEK</span>
     </div>
   );
@@ -95,7 +95,7 @@ const SidebarRoute = ({ to, title, icon }) => {
         className={({ isActive }) =>
           isActive
             ? 'sidebar-route text-white bg-green-800'
-            : 'sidebar-route text-gray-800 hover:text-gray-500 hover:bg-red-200'
+            : 'sidebar-route text-gray-800 hover:text-white hover:bg-red-300'
         }
       >
         <div className='flex items-center'>
