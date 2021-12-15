@@ -10,7 +10,7 @@ const Header = () => {
     console.log(userData)
 
     return (
-        <header className="bg-gray-200 py-2 mb-3 sticky top-0 hidden md:flex justify-start items-center px-4 border-l-2 border-white z-10">
+        <header className="bg-gray-200 py-2 mb-1 sticky top-0 hidden md:flex justify-start items-center px-4 border-l-2 border-white z-10">
             <div className="border-b-2 border-blue-400 pb-1">
             <span className="capitalize">{userData.nombre} {userData.apellido}</span> - {userData.rol}
             <i 
