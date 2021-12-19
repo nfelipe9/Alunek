@@ -40,9 +40,8 @@ const Index = () => {
                 Organiza Tus Proyectos
               </div>
               <p className="text-gray-300 text-base">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Voluptatibus quia, Nonea! Maiores et perferendis eaque,
-                exercitationem praesentium nihil.
+              Nuestro compromiso con el fomento de la empleabilidad de los estudiantes se ve reflejado en la máxima 
+              puntuación otorgada en este aspecto en el ranking internacional QS Stars.
               </p>
             </div>
           </div>
@@ -57,9 +56,8 @@ const Index = () => {
                 Comparte Tus Ideas
               </div>
               <p className="text-gray-300 text-base">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Voluptatibus quia, Nonea! Maiores et perferendis eaque,
-                exercitationem praesentium nihil.
+              El mundo ha cambiado y el empleo también. Hoy, además de dominar los conocimientos de tu especialidad 
+              es necesario tener habilidades personales, digitales, internacionales y multidisciplinares.
               </p>
             </div>
           </div>
@@ -78,8 +76,8 @@ const Index = () => {
                       Crea Y Edita Tareas
                     </h6>
                     <p className="mt-2 mb-4 text-gray-600">
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                      Voluptatibus quia, Nonea!
+                    Encontrarás un modelo de formación que combina excelencia académica, 
+                    experiencia internacional, personalización y adquisición de nuevas competencias.
                     </p>
                   </div>
                 </div>
@@ -96,8 +94,8 @@ const Index = () => {
                       Controla Los Recursos
                     </h6>
                     <p className="mt-2 mb-4 text-gray-600">
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                      Voluptatibus quia, Nonea!
+                    Centrado en metodología, prácticas y herramientas el posgrado forma a los participantes en temas como negociación, 
+                    liderazgo y gestión de proyectos complejos.
                     </p>
                   </div>
                 </div>
@@ -112,8 +110,8 @@ const Index = () => {
                     </div>
                     <h6 className="text-xl font-semibold">Alcanza Tus Metas</h6>
                     <p className="mt-2 mb-4 text-gray-600">
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                      Voluptatibus quia, Nonea!
+                    Laboraras en el campo de la gestión de proyectos, como director, gerente de oficina de Proyectos (PMO),
+                    consultor independiente, gerentes de proyectos, desarrollador y analista.
                     </p>
                   </div>
                 </div>
@@ -129,7 +127,7 @@ const Index = () => {
             alt="Indicadores"
           />
         <h6 className="pt-2 mx-20 flex-row font-semibold text-center text-gray-700">
-          EQUIPO ALUNEK @ 2021
+          EQUIPO ALUNEK @ 2021          
         </h6>
         <img
         className="p-1 mx-20 h-16 flex-row inset-x-2 "
